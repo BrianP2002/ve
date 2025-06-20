@@ -1,17 +1,12 @@
 # The GAP package ve
 
-TODO: add a description of your package; perhaps also instructions how how to
-install and use it, resp. where to find out more
+This is a renovated version of vector enumeration algorithm that fits GAP4 system.
 
 
 ## Contact
 
-TODO: add info on how to contact you and/or how to report issues with your
-package
+My email: halinbr2002[at]gmail[dot]com
 
 ## License
 
-TODO: Provide information on the license of your package. A license is
-important as it determines who has a right to distribute your package. The
-"default" license to consider is GNU General Public License v2 or later, as
-that is the license of GAP itself.
+checkout ./LICENSE
