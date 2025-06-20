@@ -2,3 +2,4 @@
 *.exe
 *.dvi
 *.swp
+.DS_Store
