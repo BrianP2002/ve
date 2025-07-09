@@ -24,7 +24,7 @@ set(OBJS2
 
 set(OBJS3
     ${SRC_DIR}/scanner.c
-    ${SRC_DIR}/input.c
+    ${SRC_DIR}/inputfun.c
     ${CMAKE_CURRENT_BINARY_DIR}/input.tab.c
 )
 
