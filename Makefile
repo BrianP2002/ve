@@ -228,19 +228,6 @@ qme/fast:
 .PHONY : qme/fast
 
 #=============================================================================
-# Target rules for targets named parser_me
-
-# Build rule for target.
-parser_me: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 parser_me
-.PHONY : parser_me
-
-# fast build rule for target.
-parser_me/fast:
-	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/parser_me.dir/build.make src/ve/CMakeFiles/parser_me.dir/build
-.PHONY : parser_me/fast
-
-#=============================================================================
 # Target rules for targets named me
 
 # Build rule for target.
@@ -289,7 +276,6 @@ help:
 	@echo "... clean-all"
 	@echo "... distrib"
 	@echo "... parser"
-	@echo "... parser_me"
 	@echo "... parser_rat"
 	@echo "... report"
 	@echo "... me"

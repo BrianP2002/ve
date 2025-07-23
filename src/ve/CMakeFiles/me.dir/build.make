@@ -70,8 +70,9 @@ include src/ve/CMakeFiles/me.dir/progress.make
 include src/ve/CMakeFiles/me.dir/flags.make
 
 src/ve/input.tab.c: src/input.y
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating input.tab.c, input.tab.h"
-	cd /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve && /usr/bin/bison -d /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/../input.y -o /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/input.tab.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "[BISON][MyParser] Building parser with bison 2.3"
+	cd /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve && /opt/homebrew/bin/cmake -E make_directory /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve
+	cd /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve && /usr/bin/bison --defines=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/input.tab.h -o /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/input.tab.c /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/../input.y
 
 src/ve/input.tab.h: src/ve/input.tab.c
 	@$(CMAKE_COMMAND) -E touch_nocreate src/ve/input.tab.h
