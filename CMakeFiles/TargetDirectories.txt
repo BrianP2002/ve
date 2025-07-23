@@ -12,7 +12,6 @@
 /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/rat/CMakeFiles/qme.dir
 /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/rat/CMakeFiles/edit_cache.dir
 /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/rat/CMakeFiles/rebuild_cache.dir
-/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/CMakeFiles/parser_me.dir
 /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/CMakeFiles/me.dir
 /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/CMakeFiles/edit_cache.dir
 /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/src/ve/CMakeFiles/rebuild_cache.dir

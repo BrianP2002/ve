@@ -124,20 +124,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/ve/CMakeFiles/parser_me.dir/rule:
-	cd /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ve/CMakeFiles/parser_me.dir/rule
-.PHONY : src/ve/CMakeFiles/parser_me.dir/rule
-
-# Convenience name for target.
-parser_me: src/ve/CMakeFiles/parser_me.dir/rule
-.PHONY : parser_me
-
-# fast build rule for target.
-parser_me/fast:
-	cd /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve && $(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/parser_me.dir/build.make src/ve/CMakeFiles/parser_me.dir/build
-.PHONY : parser_me/fast
-
-# Convenience name for target.
 src/ve/CMakeFiles/me.dir/rule:
 	cd /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ve/CMakeFiles/me.dir/rule
 .PHONY : src/ve/CMakeFiles/me.dir/rule
@@ -544,7 +530,6 @@ help:
 	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... parser_me"
 	@echo "... me"
 	@echo "... __/allocs.o"
 	@echo "... __/allocs.i"

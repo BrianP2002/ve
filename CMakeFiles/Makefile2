@@ -148,7 +148,6 @@ src/ve/preinstall:
 .PHONY : src/ve/preinstall
 
 # Recursive "clean" directory target.
-src/ve/clean: src/ve/CMakeFiles/parser_me.dir/clean
 src/ve/clean: src/ve/CMakeFiles/me.dir/clean
 .PHONY : src/ve/clean
 
@@ -159,7 +158,7 @@ src/ve/clean: src/ve/CMakeFiles/me.dir/clean
 CMakeFiles/ve_kernel.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ve_kernel.dir/build.make CMakeFiles/ve_kernel.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ve_kernel.dir/build.make CMakeFiles/ve_kernel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=39,40 "Built target ve_kernel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=38,39 "Built target ve_kernel"
 .PHONY : CMakeFiles/ve_kernel.dir/all
 
 # Build rule for subdir invocation for target.
@@ -176,7 +175,7 @@ ve_kernel: CMakeFiles/ve_kernel.dir/rule
 # codegen rule for target.
 CMakeFiles/ve_kernel.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ve_kernel.dir/build.make CMakeFiles/ve_kernel.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=39,40 "Finished codegen for target ve_kernel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=38,39 "Finished codegen for target ve_kernel"
 .PHONY : CMakeFiles/ve_kernel.dir/codegen
 
 # clean rule for target.
@@ -319,7 +318,7 @@ src/int/CMakeFiles/parser.dir/clean:
 src/int/CMakeFiles/zme.dir/all: src/int/CMakeFiles/parser.dir/all
 	$(MAKE) $(MAKESILENT) -f src/int/CMakeFiles/zme.dir/build.make src/int/CMakeFiles/zme.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/int/CMakeFiles/zme.dir/build.make src/int/CMakeFiles/zme.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57 "Built target zme"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56 "Built target zme"
 .PHONY : src/int/CMakeFiles/zme.dir/all
 
 # Build rule for subdir invocation for target.
@@ -336,7 +335,7 @@ zme: src/int/CMakeFiles/zme.dir/rule
 # codegen rule for target.
 src/int/CMakeFiles/zme.dir/codegen: src/int/CMakeFiles/parser.dir/all
 	$(MAKE) $(MAKESILENT) -f src/int/CMakeFiles/zme.dir/build.make src/int/CMakeFiles/zme.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57 "Finished codegen for target zme"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56 "Finished codegen for target zme"
 .PHONY : src/int/CMakeFiles/zme.dir/codegen
 
 # clean rule for target.
@@ -351,7 +350,7 @@ src/int/CMakeFiles/zme.dir/clean:
 src/rat/CMakeFiles/parser_rat.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/rat/CMakeFiles/parser_rat.dir/build.make src/rat/CMakeFiles/parser_rat.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/rat/CMakeFiles/parser_rat.dir/build.make src/rat/CMakeFiles/parser_rat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=21 "Built target parser_rat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=20 "Built target parser_rat"
 .PHONY : src/rat/CMakeFiles/parser_rat.dir/all
 
 # Build rule for subdir invocation for target.
@@ -368,7 +367,7 @@ parser_rat: src/rat/CMakeFiles/parser_rat.dir/rule
 # codegen rule for target.
 src/rat/CMakeFiles/parser_rat.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/rat/CMakeFiles/parser_rat.dir/build.make src/rat/CMakeFiles/parser_rat.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=21 "Finished codegen for target parser_rat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=20 "Finished codegen for target parser_rat"
 .PHONY : src/rat/CMakeFiles/parser_rat.dir/codegen
 
 # clean rule for target.
@@ -383,7 +382,7 @@ src/rat/CMakeFiles/parser_rat.dir/clean:
 src/rat/CMakeFiles/qme.dir/all: src/rat/CMakeFiles/parser_rat.dir/all
 	$(MAKE) $(MAKESILENT) -f src/rat/CMakeFiles/qme.dir/build.make src/rat/CMakeFiles/qme.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/rat/CMakeFiles/qme.dir/build.make src/rat/CMakeFiles/qme.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38 "Built target qme"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37 "Built target qme"
 .PHONY : src/rat/CMakeFiles/qme.dir/all
 
 # Build rule for subdir invocation for target.
@@ -400,7 +399,7 @@ qme: src/rat/CMakeFiles/qme.dir/rule
 # codegen rule for target.
 src/rat/CMakeFiles/qme.dir/codegen: src/rat/CMakeFiles/parser_rat.dir/all
 	$(MAKE) $(MAKESILENT) -f src/rat/CMakeFiles/qme.dir/build.make src/rat/CMakeFiles/qme.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38 "Finished codegen for target qme"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37 "Finished codegen for target qme"
 .PHONY : src/rat/CMakeFiles/qme.dir/codegen
 
 # clean rule for target.
@@ -409,42 +408,10 @@ src/rat/CMakeFiles/qme.dir/clean:
 .PHONY : src/rat/CMakeFiles/qme.dir/clean
 
 #=============================================================================
-# Target rules for target src/ve/CMakeFiles/parser_me.dir
-
-# All Build rule for target.
-src/ve/CMakeFiles/parser_me.dir/all:
-	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/parser_me.dir/build.make src/ve/CMakeFiles/parser_me.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/parser_me.dir/build.make src/ve/CMakeFiles/parser_me.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=20 "Built target parser_me"
-.PHONY : src/ve/CMakeFiles/parser_me.dir/all
-
-# Build rule for subdir invocation for target.
-src/ve/CMakeFiles/parser_me.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles 1
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ve/CMakeFiles/parser_me.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles 0
-.PHONY : src/ve/CMakeFiles/parser_me.dir/rule
-
-# Convenience name for target.
-parser_me: src/ve/CMakeFiles/parser_me.dir/rule
-.PHONY : parser_me
-
-# codegen rule for target.
-src/ve/CMakeFiles/parser_me.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/parser_me.dir/build.make src/ve/CMakeFiles/parser_me.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=20 "Finished codegen for target parser_me"
-.PHONY : src/ve/CMakeFiles/parser_me.dir/codegen
-
-# clean rule for target.
-src/ve/CMakeFiles/parser_me.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/parser_me.dir/build.make src/ve/CMakeFiles/parser_me.dir/clean
-.PHONY : src/ve/CMakeFiles/parser_me.dir/clean
-
-#=============================================================================
 # Target rules for target src/ve/CMakeFiles/me.dir
 
 # All Build rule for target.
-src/ve/CMakeFiles/me.dir/all: src/ve/CMakeFiles/parser_me.dir/all
+src/ve/CMakeFiles/me.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/me.dir/build.make src/ve/CMakeFiles/me.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/me.dir/build.make src/ve/CMakeFiles/me.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target me"
@@ -452,7 +419,7 @@ src/ve/CMakeFiles/me.dir/all: src/ve/CMakeFiles/parser_me.dir/all
 
 # Build rule for subdir invocation for target.
 src/ve/CMakeFiles/me.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles 18
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ve/CMakeFiles/me.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles 0
 .PHONY : src/ve/CMakeFiles/me.dir/rule
@@ -462,7 +429,7 @@ me: src/ve/CMakeFiles/me.dir/rule
 .PHONY : me
 
 # codegen rule for target.
-src/ve/CMakeFiles/me.dir/codegen: src/ve/CMakeFiles/parser_me.dir/all
+src/ve/CMakeFiles/me.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/ve/CMakeFiles/me.dir/build.make src/ve/CMakeFiles/me.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/halin/Northwestern_University/2025_Summer/gap-4.14.0/pkg/ve/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Finished codegen for target me"
 .PHONY : src/ve/CMakeFiles/me.dir/codegen

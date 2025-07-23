@@ -25,24 +25,19 @@ set(OBJS2
 set(OBJS3
     ${SRC_DIR}/scanner.c
     ${SRC_DIR}/inputfun.c
-    ${CMAKE_CURRENT_BINARY_DIR}/input.tab.c
 )
 
 set(XTRAOBJS
     ${SRC_DIR}/scrut.c
 )
 
-add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/input.tab.c ${CMAKE_CURRENT_BINARY_DIR}/input.tab.h
-    COMMAND ${BISON_EXECUTABLE} -d ${SRC_DIR}/input.y -o ${CMAKE_CURRENT_BINARY_DIR}/input.tab.c
-    DEPENDS ${SRC_DIR}/input.y
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-)
+if(BISON_FOUND)
+    BISON_TARGET(MyParser ${SRC_DIR}/input.y ${CMAKE_CURRENT_BINARY_DIR}/input.tab.c
+        DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/input.tab.h
+    )
+endif()
 
-add_custom_target(parser_me DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/input.tab.c ${CMAKE_CURRENT_BINARY_DIR}/input.tab.h)
-
-add_executable(me ${OBJS1} ${OBJS2} ${OBJS3} ${XTRAOBJS})
-add_dependencies(me parser_me)
+add_executable(me ${OBJS1} ${OBJS2} ${OBJS3} ${XTRAOBJS} ${BISON_MyParser_TARGET})
 
 target_include_directories(me PRIVATE ${SRC_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_definitions(me PRIVATE ME)
