@@ -54,24 +54,24 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.13",
+  GAP := ">= 4.0.1",
   NeededOtherPackages := [ ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
 
 AvailabilityTest := function()
-  if not IsKernelExtensionAvailable("ve") then
-    LogPackageLoadingMessage(PACKAGE_WARNING,
-                             "failed to load kernel module of package ve");
-    return false;
-  fi;
+  # if not IsKernelExtensionAvailable("ve") then
+  #   LogPackageLoadingMessage(PACKAGE_WARNING,
+  #                            "failed to load kernel module of package ve");
+  #   return false;
+  # fi;
   return true;
 end,
 
 TestFile := "tst/testall.g",
 
-#Keywords := [ "TODO" ],
+Keywords := [ "On Vector Enumeration" ],
 
 ));
 
