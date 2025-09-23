@@ -1,9 +1,0 @@
-#
-# Makefile rules for the ve package
-#
-KEXT_NAME = ve
-KEXT_SOURCES = src/ve.cc
-
-# include shared GAP package build system
-GAPPATH = @GAPPATH@
-include Makefile.gappkg
