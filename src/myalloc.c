@@ -35,12 +35,12 @@ static struct mablock mahead = { SMAGIC, 0, 0, __FILE__, __LINE__,
 /* Allocate n bytes. If b is true then return NULL if no more room,
    otherwise generate a fatal error */
 
-pointer myreallocf(p,n,b,file,line)
-     pointer p;
-     size_t n;
-     bool b;
-     char *file;
-     int line;
+pointer myreallocf(
+     pointer p,
+     size_t n,
+     bool b,
+     char *file,
+     int line)
 {
   char *s;
   pointer p1;
@@ -79,11 +79,11 @@ pointer myreallocf(p,n,b,file,line)
 }
 
 
-pointer  myallocf(n,b,file,line)
-     size_t n;
-     bool b;
-     char *file;
-     int line;
+pointer  myallocf(
+     size_t n,
+     bool b,
+     char *file,
+     int line)
 {
   char * p;
   maptr m;
@@ -125,10 +125,10 @@ pointer  myallocf(n,b,file,line)
 
 /* Free a block allocated by myalloc, checking for various errors */
 
-void myfreef(p,file,line)
-     pointer p;
-     char *file;
-     int line;
+void myfreef(
+     pointer p,
+     char *file,
+     int line)
 {
   maptr m;
   bool failed = false;
@@ -176,8 +176,7 @@ void myfreef(p,file,line)
 
 #include <ctype.h>
 
-void DumpHeap(output)
-     int output;
+void DumpHeap(int output)
 {
   maptr m;
   unsigned char *p;
