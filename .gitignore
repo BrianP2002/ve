@@ -3,3 +3,6 @@
 *.dvi
 *.swp
 .DS_Store
+/bin
+/build
+*~
