@@ -5,11 +5,6 @@
 #include <stdio.h>
 /* #include <malloc.h> */
 
-typedef unsigned int bool;
-
-#define true 1
-#define false 0
-
 #define max(a,b) ((a)>(b)?(a):(b))
 #define min(a,b) ((a)>(b)?(b):(a))
 
@@ -31,7 +26,7 @@ typedef char * pointer;
 #ifndef DEBUG
 #define myexit(rc) exit(rc)
 #else
-extern void myexit();
+extern void myexit(int);
 #endif
 
 #endif
