@@ -21,9 +21,7 @@ static basiselt sctabsize;
 
 
 #ifdef GFP
-static fldelt scrdfelt(f,b)
-     FILE *f;
-     bool *b;
+static fldelt scrdfelt(FILE *f,bool *b)
 {
   fldelt x;
   *b = 1 == fread((pointer)&x,sizeof(fldelt),1,f);
@@ -32,9 +30,7 @@ static fldelt scrdfelt(f,b)
 #endif
 
 #ifdef RATIONAL
-static fldelt scrdfelt(f,b)
-     FILE *f;
-     bool *b;
+static fldelt scrdfelt(FILE *f,bool *b)
 {
   fldelt x;
   Finit(x);
@@ -47,9 +43,7 @@ static fldelt scrdfelt(f,b)
 #endif
 
 #ifdef INTEGRAL
-static fldelt scrdfelt(f,b)
-     FILE *f;
-     bool *b;
+static fldelt scrdfelt(FILE *f,bool *b)
 {
   fldelt x;
   Finit(x);
@@ -60,8 +54,7 @@ static fldelt scrdfelt(f,b)
 
 #endif
 
-static vector scrdv(f)
-     FILE *f;
+static vector scrdv(FILE *f)
 {
   fldelt x;
   bool readok;
@@ -97,8 +90,7 @@ static vector scrdv(f)
 
 
 #ifndef INTEGRAL
-static void scinvert(g,h)
-     gpgen g,h;
+static void scinvert(gpgen g,gpgen h)
 {
   vector *extra,v,v1;
   basiselt b,b1;
@@ -334,8 +326,7 @@ void scsetup()			/* initialize */
 
 }
 
-void scpk(b1,b2)			/* Note that b2 is being moved to b1 */
-     basiselt b1,b2;
+void scpk(basiselt b1,basiselt b2)			/* Note that b2 is being moved to b1 */
 {
   if (trans[b1])
     vfree(trans[b1]);
@@ -344,9 +335,7 @@ void scpk(b1,b2)			/* Note that b2 is being moved to b1 */
 }
 
 
-void scdef(b1,g,b2)			/* process the defn b2 = b1.g */
-     basiselt b1,b2;
-     gpgen g;
+void scdef(basiselt b1,gpgen g,basiselt b2)			/* process the defn b2 = b1.g */
 {
   basiselt b;
   if (b2 >= sctabsize)
@@ -362,9 +351,7 @@ void scdef(b1,g,b2)			/* process the defn b2 = b1.g */
   trans[b2] = scact(trans[b1],g);
 }
 
-vector scact(s,g)		/* (real) action of generator on a vector */
-     vector s;
-     gpgen g;
+vector scact(vector s,gpgen g)		/* (real) action of generator on a vector */
 {
   vector s1,s2;
 #ifdef PANIC
@@ -396,9 +383,8 @@ vector scact(s,g)		/* (real) action of generator on a vector */
   return(s1);
 }
 
-vector scv(v)			/* convert a vector to its 
+vector scv(vector v)			/* convert a vector to its 
 				 translation */
-     vector v;
 {
   vector s,s1;
   newsvec(s,0);
@@ -422,8 +408,7 @@ vector scv(v)			/* convert a vector to its
   return(s);
 }
 
-void sccheckc(v)		/* check that b & v are equal */
-     vector v;
+void sccheckc(vector v)		/* check that b & v are equal */
 {
   vector s2=scv(v);
   if (!zerop(s2)) 
@@ -438,10 +423,7 @@ void sccheckc(v)		/* check that b & v are equal */
   return;
 }
 
-void sccheckd(b,g,v)		/* check that eb.g = v */
-     basiselt b;
-     gpgen g;
-     vector v;
+void sccheckd(basiselt b,gpgen g,vector v)		/* check that eb.g = v */
 {
   vector s1,s2,s3,s;
   s1 = trans[b];
@@ -464,8 +446,7 @@ void sccheckd(b,g,v)		/* check that eb.g = v */
   return;
 }
 
-void sccheckeq(v1,v2)		/* check that v1 = v2 */
-     vector v1,v2;
+void sccheckeq(vector v1, vector v2)		/* check that v1 = v2 */
 {
   vector s1 = scv(v1);
   vector s2 = scv(v2);
@@ -486,9 +467,7 @@ void sccheckeq(v1,v2)		/* check that v1 = v2 */
   vfree(s);
 }
 
-void sccheckxeq(v1,g,v2)
-     vector v1,v2;
-     gpgen g;
+void sccheckxeq(vector v1,gpgen g,vector v2)
 {
   vector s1,s2,s3,s;
   s1 = scv(v1);

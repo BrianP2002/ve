@@ -23,8 +23,7 @@ void CleanPack()
 
 
 
-static int cmprel(r1,r2)
-	const pointer r1,r2;
+static int cmprel(const pointer r1,const pointer r2)
 {
     basiselt n1= (*(rell *)r1)->NexttoDo,n2=(*(rell*)r2)->NexttoDo;
     if (n1 < n2) return -1;
@@ -32,8 +31,7 @@ static int cmprel(r1,r2)
     else return 1;
  }
 
-static int lcmprel(r1,r2)
-	const pointer r1,r2;
+static int lcmprel(const pointer r1,const pointer r2)
 {
     basiselt n1= (*(rell*)r1)->SavedNext,n2=(*(rell*)r2)->SavedNext;
     if (n1 < n2) return -1;

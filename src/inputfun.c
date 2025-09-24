@@ -29,8 +29,7 @@ gpgen *newgl()
    return (p);
 }
 
-static void makenotinv(g)
-     gpgen g;
+static void makenotinv(gpgen g)
 {
   int i;
   if (inverse[g] !=  g)
@@ -53,9 +52,7 @@ static void makenotinv(g)
     }
 }
 
-void setupinverses( noinv, notinv)
-     gpgen *noinv;
-     gpgen *notinv;
+void setupinverses(gpgen *noinv, gpgen *notinv)
 {
   int i;
   gpgen g;
@@ -89,8 +86,7 @@ void setupinverses( noinv, notinv)
       makenotinv(g);
 }	
 
-void addugen(l)
-     char l;
+void addugen(char l)
 {
   if (!(nextgen%GENBLOCK))
     if (nextgen)
@@ -105,8 +101,7 @@ void addugen(l)
   nextgen++;
 }
 
-void addlgen(s)
-     char *s;
+void addlgen(char *s)
 {
   if (!(nextgen%GENBLOCK))
     if (nextgen)
@@ -121,8 +116,7 @@ void addlgen(s)
 }
 
 				
-gpwd ginverse(w)		/* invert a gp word */
-     gpwd w;
+gpwd ginverse(gpwd w)		/* invert a gp word */
 {
   gpwd w1;
   int i;
@@ -136,9 +130,7 @@ gpwd ginverse(w)		/* invert a gp word */
   return(w1);
 }
 
-gpwd gpower(w,n)		/* power one */
-     gpwd w;
-     int n;
+gpwd gpower(gpwd w, int n)		/* power one */
 {
   gpwd w1;
   int i,j,k;
@@ -151,8 +143,7 @@ gpwd gpower(w,n)		/* power one */
   return(w1);
 }
 
-gpwd gconcat(w1,w2)		/* Concatenate two */
-     gpwd w1,w2;
+gpwd gconcat(gpwd w1, gpwd w2)		/* Concatenate two */
 {
   gpwd w;
   int i,j;
@@ -174,8 +165,7 @@ gpwd gconcat(w1,w2)		/* Concatenate two */
   return(w);
 }
 
-gpwd gconj(w1,w2)
-     gpwd w1,w2;
+gpwd gconj(gpwd w1, gpwd w2)
 {
   gpwd w,w3,w4;
   w3 = gconcat(w1,w2);
@@ -188,8 +178,7 @@ gpwd gconj(w1,w2)
   return w;
 }
 
-gpwd gcomm(w1,w2)
-     gpwd w1,w2;
+gpwd gcomm(gpwd w1, gpwd w2)
 {
   gpwd w,w3,w4,w5,w6;
   w3 = gconcat(w1,w2);
@@ -216,8 +205,7 @@ gpwd gcomm(w1,w2)
 #define AbLWt 2
 
 
-rell neweq(lft,rt)
-     gaw lft,rt;
+rell neweq(gaw lft, gaw rt)
 {
   rell r;
   r = (rell)myalloc(sizeof(struct _rell),false);
@@ -231,8 +219,7 @@ rell neweq(lft,rt)
   return(r);
 }
 
-rell gtorel(g)
-     gpwd g;
+rell gtorel(gpwd g)
 {
   rell r;
   int i;
@@ -251,8 +238,7 @@ rell gtorel(g)
   return(r);
 }
 
-rell relconcat(r1,r2)		/* in situ concatenate two relator lists */
-     rell r1,r2;
+rell relconcat(rell r1, rell r2)		/* in situ concatenate two relator lists */
 {
   rell r;
   if (!r1)
@@ -371,10 +357,7 @@ int yyerror(s)			/* minimal error handler */
   return true;
 }
 
-swl newswl(loc,w,next)
-     basiselt loc;
-     gaw w;
-     swl next;
+swl newswl(basiselt loc, gaw w, swl next)
 {
   swl s;
   s = (swl) myalloc(sizeof(_swl),false);
@@ -384,8 +367,7 @@ swl newswl(loc,w,next)
   return s;
 }
 
-wordl newwordl(w)
-	gaw w;
+wordl newwordl(gaw w)
 {	
     wordl wl;
     wl = (wordl)myalloc(sizeof(struct _wordl),false);
@@ -432,8 +414,7 @@ smgl newuniv(start,end,w)
 
 #define newsmg(s) s = (smg) myalloc(sizeof(struct _smg),false);
 
-smg relltosmg(r)
-     rell r;
+smg relltosmg(rell r)
 {
   smg s;
   newsmg(s);
@@ -442,8 +423,7 @@ smg relltosmg(r)
   return(s);
 }
 
-smg smgltosmg(sl)
-     smgl sl;
+smg smgltosmg(smgl sl)
 {
   smg s;
   newsmg(s);
@@ -484,8 +464,7 @@ void setfield(p)
 
 #ifdef GFP
 
-int inttorat(x)
-     int x;
+int inttorat(int x)
 {
   int r=x;
   while (r < 0)

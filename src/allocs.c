@@ -118,8 +118,7 @@ union _dw {
 
 dwp FreeDwps = {NULL};
 
-pointer alloc_for_gmp(n)
-     size_t n;
+pointer alloc_for_gmp(size_t n)
 {
   pointer p;
   wp w,w1;
@@ -181,9 +180,7 @@ pointer alloc_for_gmp(n)
     return myalloc(n,false);
 }
 
-void free_for_gmp(p, n)
-     pointer p;
-     size_t n;
+void free_for_gmp(pointer p, size_t n)
 {
   if (n==sizeof(GMP_LIMB))
     {
@@ -199,9 +196,7 @@ void free_for_gmp(p, n)
     myfree(p);
 }
 
-pointer realloc_for_gmp(p, o, n)
-     pointer p;
-     size_t o,n;
+pointer realloc_for_gmp(pointer p, size_t o, size_t n)
 {
   pointer p1;
   if (o == n)

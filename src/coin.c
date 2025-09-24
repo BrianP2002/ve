@@ -6,8 +6,7 @@
 coinl coincidences=NULL;	/* stacks */
 deductl deductions=NULL;
 
-void stackc(v)			/* Stack a coincidence */
-     vector v;
+void stackc(vector v)			/* Stack a coincidence */
 {
   coinl c;
   LOG(logcoin,
@@ -20,10 +19,7 @@ void stackc(v)			/* Stack a coincidence */
   coincidences = c;
 }
 
-void stackd(b,g,v)			/* Stack a deduction */
-     basiselt b;
-     gpgen g;
-     vector v;
+void stackd(basiselt b, gpgen g, vector v)			/* Stack a deduction */
 {
   deductl d;
   LOG(logcoin,
@@ -37,9 +33,7 @@ void stackd(b,g,v)			/* Stack a deduction */
   deductions = d;
 }
 
-retcode stackxeq(v1,x,v2)	/* handle the info. v1.x=v2 */
-     vector v1,v2;
-     gpgen x;
+retcode stackxeq(vector v1, gpgen x, vector v2)	/* handle the info. v1.x=v2 */
 {
   vector v1x;
 #ifndef INTEGRAL
@@ -157,11 +151,10 @@ retcode stackxeq(v1,x,v2)	/* handle the info. v1.x=v2 */
 #endif
   return(OK);
 }
-	  
-      
-void stackeq(v1,v2)			/* find the coincidence in v1 = v2
+
+
+void stackeq(vector v1, vector v2)			/* find the coincidence in v1 = v2
 				 and stack it */
-     vector v1,v2;
 {
   vector v;
   LOG(logcoin,fprintf(logfile,"%sStacking equation ",logprefix);
@@ -184,9 +177,8 @@ void stackeq(v1,v2)			/* find the coincidence in v1 = v2
   return;
 }
 
-retcode processc(v)			/* process the coincidence e_b = v */
+retcode processc(vector v)			/* process the coincidence e_b = v */
 				/* may free v */
-     vector v;
 {
   row r;
   vector v0 = vroot(v);		/* go to undeleted image */
@@ -418,9 +410,7 @@ retcode processc(v)			/* process the coincidence e_b = v */
 }
 
 
-void clrent(b,g)			/* clear an entry */
-     basiselt b;
-     gpgen g;
+void clrent(basiselt b, gpgen g)			/* clear an entry */
 {
   vector v = tabent(b,g);
 #ifndef LEN
@@ -543,10 +533,7 @@ vector vroot(v)			/* find the undeleted name of v */
   return(v1);
 }
 
-retcode processd(b,g,v)			/* process the deduction b.g = v */
-     basiselt b;
-     gpgen g;
-     vector v;
+retcode processd(basiselt b, gpgen g, vector v)			/* process the deduction b.g = v */
 {
   vector v1,v0 = vroot(v);
   retcode rc;
@@ -590,11 +577,8 @@ retcode processd(b,g,v)			/* process the deduction b.g = v */
   return(OK);
 }
 
-void install(b,g,v)			/* install a known trouble-free
+void install(basiselt b, gpgen g, vector v)			/* install a known trouble-free
 				  entry */
-     basiselt b;
-     gpgen g;
-     vector v;
 {
   blanks--;
   tabent(b,g) = v;
@@ -625,8 +609,7 @@ void install(b,g,v)			/* install a known trouble-free
 #endif
 }
 
-static void DelCoin(c)
-     coinl c;
+static void DelCoin(coinl c)
 {
   coinl cn;
   if (!c)
@@ -637,8 +620,7 @@ static void DelCoin(c)
   DelCoin(cn);
 }
 
-static void DelDeduct(d)
-     deductl d;
+static void DelDeduct(deductl d)
 {
   deductl dn;
   if (!d)

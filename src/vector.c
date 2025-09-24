@@ -10,9 +10,8 @@
 
 #define PACKERR 10		/* allowed variation */
 
-vector vtidy(v)			/* replace packed vectors w. few non-zero */
+vector vtidy(vector v)			/* replace packed vectors w. few non-zero */
 				/* entries with sparse ones  etc. */
-     vector v;
 {
   sent s,send;
   basiselt i,last;
@@ -80,10 +79,7 @@ vector vtidy(v)			/* replace packed vectors w. few non-zero */
 #undef myP
 #endif
 
-vector adds(v1,v2,f)		/* Compute v1+f*v2 */
-     vector v1;
-     vector v2;
-     fldelt f;
+vector adds(vector v1, vector v2, fldelt f)		/* Compute v1+f*v2 */
 {
 #ifdef GFP
   register fldelt myP = P;
@@ -516,8 +512,7 @@ vector adds(v1,v2,f)		/* Compute v1+f*v2 */
 #endif
 
 
-void vfree(v)			/* free a vector */
-     vector v;
+void vfree(vector v)			/* free a vector */
 {
   PS(v,
      myfree((pointer)BodyP(v));
@@ -532,10 +527,8 @@ void vfree(v)			/* free a vector */
 
 #undef CLEANENTS
 
-vector smul(v,f)		/* multiply a vector (in place)
+vector smul(vector v,fldelt f)		/* multiply a vector (in place)
 				 by a scalar, returns 1st arg */
-     vector v;
-     fldelt f;
 {
   if (!IsOne(f))
     {
@@ -568,8 +561,7 @@ vector smul(v,f)		/* multiply a vector (in place)
 }
 	   
 
-vector btov(b)			/* weight one vector corr. to basis elt b */
-     basiselt b;
+vector btov(basiselt b)			/* weight one vector corr. to basis elt b */
 {
   vector v;
   sent s;
@@ -582,8 +574,7 @@ vector btov(b)			/* weight one vector corr. to basis elt b */
   return(v);
 }
 
-vector vcopy(v)			/* copy a vector */
-     vector v;
+vector vcopy(vector v)			/* copy a vector */
 {
   vector vc;
   PS(v,
@@ -620,8 +611,7 @@ static fldelt *fldinvs = NULL;	/* field inverses look up table
 				 initialized in fldinv */
 
 
-fldelt fldinv(f)		/* invert a field elt. */
-     fldelt f;
+fldelt fldinv(fldelt f)		/* invert a field elt. */
 {
   ASSERT(!IsZero(f));
   if (!fldinvs) /* implementation specific stuff */
@@ -658,8 +648,7 @@ void ClearFldInv()
 
 #ifdef RATIONAL
 
-fldelt fldinv(f)
-     fldelt f;
+fldelt fldinv(fldelt f)
 {
   fldelt g SAFE;
   Finit(g);
@@ -674,9 +663,7 @@ void ClearFldInv()
 
 #endif
 
-sent FindEnt(v,b)
-     vector v;
-     basiselt b;
+sent FindEnt(vector v, basiselt b)
 {
   long top,bottom,middle;
   basiselt b1;
@@ -704,9 +691,7 @@ sent FindEnt(v,b)
 }
 
 
-void DelSent(v,s)
-     vector v;
-     sent s;
+void DelSent(vector v, sent s)
 {
 #ifdef PACKED_VEC
   ASSERT(Type(v) == sparse);
@@ -722,8 +707,7 @@ void DelSent(v,s)
       Len(v) = 0;
 }
 
-void DelLast(v)
-     vector v;
+void DelLast(vector v)
 {
 #ifdef PACKED_VEC
   ASSERT(Type(v) == sparse);
@@ -740,8 +724,7 @@ void DelLast(v)
 
 #ifndef PACKED_VEC
 
-vector NewsVecFunc(w)
-     basiselt w;
+vector NewsVecFunc(basiselt w)
 {
   vector v;
   sent s;

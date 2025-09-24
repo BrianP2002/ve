@@ -22,23 +22,17 @@ char *gap2var;
 
 
 #ifdef GFP
-void outfelt(f,x)
-     FILE *f;
-     fldelt x;
+void outfelt(FILE *f, fldelt x)
 {
   fprintf(f,"%u",(unsigned int)x);
 }
 
-void outbin(f,x)
-     FILE *f;
-     fldelt x;
+void outbin(FILE *f, fldelt x)
 {
     fwrite(&x,sizeof(fldelt),1,f);
 }
 
-char *felttos(s,x)
-     char *s;
-     fldelt x;
+char *felttos(char *s, fldelt x)
 {
   sprintf(s,"%u",(unsigned int)x);
   while (*s)
@@ -50,9 +44,7 @@ char *felttos(s,x)
 
 #ifdef RATIONAL
 
-void outfelt(f,q)
-     FILE *f;
-     fldelt q;
+void outfelt(FILE *f, fldelt q)
 {
   MP_INT t;
   mpz_init(&t);
@@ -70,9 +62,7 @@ void outfelt(f,q)
   mpz_clear(&t);
 }
 
-char * felttos(s,q)
-     char *s;
-     fldelt q;
+char * felttos(char *s, fldelt q)
 {
   MP_INT t;
   mpz_init(&t);
@@ -95,9 +85,7 @@ char * felttos(s,q)
   return(s);
 }
 
-void outbin(f,x)
-     FILE *f;
-     fldelt x;
+void outbin(FILE *f, fldelt x)
 {
      mpz_out_raw(f,mpq_numref(&x));
      mpz_out_raw(f,mpq_denref(&x));
@@ -107,23 +95,17 @@ void outbin(f,x)
 
 #ifdef INTEGRAL
 
-void outfelt(f,z)
-     FILE *f;
-     fldelt z;
+void outfelt(FILE *f, fldelt z)
 {
   mpz_out_str(f,10,&z);
 }
 
-void outbin(f,z)
-     FILE *f;
-     fldelt z;
+void outbin(FILE *f, fldelt z)
 {
   mpz_out_raw(f,&z);
 }
 
-char *felttos(s,z)
-     char *s;
-     fldelt z;
+char *felttos(char *s, fldelt z)
 {
   mpz_get_str(s,10,&z);
   while (*s)
@@ -133,8 +115,7 @@ char *felttos(s,z)
 
 #endif
 
-static void CayHead(f)
-     FILE *f;
+static void CayHead(FILE *f)
 {
   char *s = ofn;
   while (*++s)		/* find end of file name */
@@ -155,9 +136,7 @@ static void CayHead(f)
   fprintf(f,"vs : vector space (%u,fld);\n",nalive);
 }
 
-static void CayStMat(f,g)
-     FILE *f;
-     gpgen g;
+static void CayStMat(FILE *f, gpgen g)
 {
 #ifdef INTEGRAL
   if (g == (gpgen) -2)
@@ -170,27 +149,23 @@ static void CayStMat(f,g)
       fprintf(f,"Images := MAT(\n\t\t");
 }
 
-static void CayStGens(f)
-     FILE *f;
+static void CayStGens(FILE *f)
 {
   fputs("grp : matrix group (vs);\ngrp.generators :\n",f);
 }
 
-static void CayEGens(f)
-     FILE *f;
+static void CayEGens(FILE *f)
 {
   fputs(";\n",f);
 }
 
-static void CayTail(f)
-     FILE *f;
+static void CayTail(FILE *f)
 {
   fprintf(f,"VEruntime = %lu;\n",RunTime());
   fputs("FINISH;",f);
 }
 
-static void GAPHead(f)
-     FILE *f;
+static void GAPHead(FILE *f)
 {
 #ifdef GFP
   fprintf(f,"field := GF(%u);\n",(unsigned int)P);
@@ -204,9 +179,7 @@ static void GAPHead(f)
   fprintf(f,"VErunTime := %lu;\n",RunTime());
 }
 
-static void GAPStMat(f,g)
-     FILE *f;
-     gpgen g;
+static void GAPStMat(FILE *f, gpgen g)
 {
 #ifdef INTEGRAL
   if (g == (gpgen)-2)
@@ -220,8 +193,7 @@ static void GAPStMat(f,g)
   fputs(" := field.one*[",f);
 }
 
-static void GAPEGens(f)
-     FILE *f;
+static void GAPEGens(FILE *f)
 {
   bool started = false;
   gpgen g;
@@ -237,8 +209,7 @@ static void GAPEGens(f)
   fputs("];\n",f);
 }
 
-static void MCRHead(f)
-     FILE *f;
+static void MCRHead(FILE *f)
 {
   fprintf(f,
 	  "%u %u %u %u",
@@ -252,14 +223,12 @@ static void MCRHead(f)
   fputc('\n',f);
 }
 
-static void MCRTail(f)
-     FILE *f;
+static void MCRTail(FILE *f)
 {
   fprintf(f,"%lu\n", RunTime());
 }
 
-static void MCBHead(f)
-     FILE *f;
+static void MCBHead(FILE *f)
 {
   unsigned int t;
   t = (unsigned int)nalive;
@@ -276,8 +245,7 @@ static void MCBHead(f)
 #endif
 }
 
-static void MCBTail(f)
-     FILE *f;
+static void MCBTail(FILE *f)
 {
   unsigned long t;
   t = RunTime();
@@ -285,8 +253,7 @@ static void MCBTail(f)
 }
 
 
-static void AXHead(f)
-     FILE *f;
+static void AXHead(FILE *f)
 {
 #ifdef GFP
   fprintf(f,"fld := FF(%u,1)\n",(unsigned int) P);
@@ -300,9 +267,7 @@ static void AXHead(f)
   fprintf(f,"VErunTime := %lu\n",RunTime());  
 }
 
-static void AXStMat(f,g)
-     FILE *f;
-     gpgen g;
+static void AXStMat(FILE *f, gpgen g)
 {
 #ifdef INTEGRAL
   if (g == (gpgen)-2)
@@ -316,8 +281,7 @@ static void AXStMat(f,g)
   fputs(" := matrix([",f);
 }
 
-static void AXEGens(f)
-     FILE *f;
+static void AXEGens(FILE *f)
 {
   bool started = false;
   gpgen g;
@@ -333,8 +297,7 @@ static void AXEGens(f)
   fputs("]\n",f);
 }
 
-void GAPStPims(f)
-     FILE *f;
+void GAPStPims(FILE *f)
 {
   gpgen g;
   for (g = 0; g < nextgen; g++)
@@ -344,36 +307,27 @@ void GAPStPims(f)
   fputs("preImages := [\n",f);
 }
 
-void GAPStPim(f,fmg)
-     FILE *f;
-     basiselt fmg;
+void GAPStPim(FILE *f, basiselt fmg)
 {
   fprintf(f,"rec( modGen := %u, word := ",fmg);
 }
 
-void GAPWrGen(f,g)
-     FILE *f;
-     gpgen g;
+void GAPWrGen(FILE *f, gpgen g)
 {
   fprintf(f,"g%s",gennames[g]);
 }
 
-void GAPEPim(f)
-     FILE *f;
+void GAPEPim(FILE *f)
 {
   fputs(")",f);
 }
 
-void MCRStPim(f,fmg)
-     FILE *f;
-     basiselt fmg;
+void MCRStPim(FILE *f, basiselt fmg)
 {
   fprintf(f,"%u ",(unsigned int)fmg);
 }
 
-void MCRWrGen(f,g)
-     FILE *f;
-     gpgen g;
+void MCRWrGen(FILE *f, gpgen g)
 {
   if (inverse[g] == NOINVERSE || inverse[g] >= g)
     fprintf(f,"%d",(int)g+1);
@@ -381,23 +335,18 @@ void MCRWrGen(f,g)
     fprintf(f,"%d",-((int)inverse[g]+1));
 }
 
-void MCREPim(f)
-     FILE *f;
+void MCREPim(FILE *f)
 {
   fputs(" 0",f);
 }
 
-void MCBStPim(f,fmg)
-     FILE *f;
-     basiselt fmg;
+void MCBStPim(FILE *f, basiselt fmg)
 {
   unsigned int t = (unsigned int)fmg;
   fwrite(&t,sizeof(unsigned int),1,f);
 }
 
-void MCBWrGen(f,g)
-     FILE *f;
-     gpgen g;
+void MCBWrGen(FILE *f, gpgen g)
 {
   int t;
   if (inverse[g] == NOINVERSE || inverse[g] >= g)
@@ -407,15 +356,13 @@ void MCBWrGen(f,g)
   fwrite(&t,sizeof(unsigned int),1,f);
 }
 
-void MCBEPim(f)
-     FILE *f;
+void MCBEPim(FILE *f)
 {
   unsigned int t = 0;
   fwrite(&t,sizeof(unsigned int),1,f);
 }
 
-void AXStPims(f)
-     FILE *f;
+void AXStPims(FILE *f)
 {
   gpgen g;
   bool started = false;
@@ -432,16 +379,12 @@ void AXStPims(f)
   fputs("]\npreImagesL : LIST LIST Any := [_\n",f);
 }
 
-void AXStPim(f,fmg)
-     FILE *f;
-     basiselt fmg;
+void AXStPim(FILE *f, basiselt fmg)
 {
   fprintf(f,"[ %u, ",(unsigned int)fmg);
 }
 
-void AXWrGen(f,g)
-     FILE *f;
-     gpgen g;
+void AXWrGen(FILE *f, gpgen g)
 {
   if (inverse[g] == NOINVERSE || inverse[g] >= g)
     fputs(gennames[g],f);
@@ -449,8 +392,7 @@ void AXWrGen(f,g)
     fprintf(f,"%s ** -1",gennames[inverse[g]]);
 }
 
-void AXEPim(f)
-     FILE *f;
+void AXEPim(FILE *f)
 {
   fputs("]",f);  
 }
@@ -628,8 +570,7 @@ void OutRow(f,v,s)
 }
 
 
-static void DoOutput(m)
-     OutMode m;
+static void DoOutput(OutMode m)
 {
   char *fn;
   outstyle *s = outstyles+m;
@@ -729,11 +670,7 @@ static void DoOutput(m)
 }
 
 #ifdef GFP
-static void MTXoutrow(f,v,mode,len,fmt)
-     FILE *f;
-     vector v;
-     int mode,len;
-     char *fmt;
+static void MTXoutrow(FILE *f, vector v, int mode, int len, char *fmt)
 {
   basiselt l,i,bb;
   sent se, send;
@@ -916,18 +853,14 @@ void mxsout()
 
 #ifdef LOGGING			/* don't need these unless loggging  */
 
-void printgaw(f,w)			/* print group algebra word w on file f*/
-     FILE *f;
-     gaw w;
+void printgaw(FILE *f, gaw w)			/* print group algebra word w on file f*/
 {
   char s[1000];
   gawtos(w,s,false);
   fputs(s,f);
 }
 
-void gpwdtos(s,g)			/* put the string for g into buffer at s */
-     char *s;
-     gpwd g;
+void gpwdtos(char *s, gpwd g)			/* put the string for g into buffer at s */
 {
   char *s1;
   int  i,l = g->len;
@@ -944,11 +877,8 @@ void gpwdtos(s,g)			/* put the string for g into buffer at s */
   return;
 }
 
-void gawtos(w,s,f)			/* put the string for w into buffer s
+void gawtos(gaw w, char *s, bool f)			/* put the string for w into buffer s
 				 if f then an addition needs brackets */
-     gaw w;
-     char *s;
-     bool f;
 {
   switch(w->type)
     {
@@ -981,9 +911,7 @@ void gawtos(w,s,f)			/* put the string for w into buffer s
 }
 
 
-void printtable(f,pref)			/* Print the entire coset table */
-     FILE *f;
-     char *pref;
+void printtable(FILE *f, char *pref)			/* Print the entire coset table */
 {
   basiselt b,b1;
   gpgen g;
@@ -1022,9 +950,7 @@ void printtable(f,pref)			/* Print the entire coset table */
 #endif
 }
 
-void printrel(f,r)
-	FILE *f;
-	rell r;
+void printrel(FILE *f, rell r)
 {
    char s[1000];
    fprintf(f,
@@ -1048,10 +974,7 @@ void printrel(f,r)
 }
 
 
-void printrl(f,pref,rl)
-     FILE *f;
-     char *pref;
-     rell rl;
+void printrl(FILE *f, char *pref, rell rl)
 {
   rell r;
   for (r = rl; r; r=r->next)
@@ -1066,9 +989,7 @@ void printrl(f,pref,rl)
 
 #if (defined(LOGGING) || defined(SCRUT))
 
-void vprint(f,v)			/* print a vector */
-     FILE *f;
-     vector v;
+void vprint(FILE *f, vector v)			/* print a vector */
 {
   PS(v,
      basiselt i;
@@ -1092,8 +1013,7 @@ void vprint(f,v)			/* print a vector */
 #endif
 
 #ifdef LOGGING
-void printstacks(f)			/* print stacks */
-     FILE *f;
+void printstacks(FILE *f)			/* print stacks */
 {
   coinl c;
   deductl d;
@@ -1111,9 +1031,7 @@ void printstacks(f)			/* print stacks */
     }
 }
 
-void printwordl(f,wl)
-     FILE *f;
-     wordl wl;
+void printwordl(FILE *f, wordl wl)
 {
   basiselt b;
   swl s;
@@ -1144,9 +1062,7 @@ void printwordl(f,wl)
     }
 }
 
-void printsmg(f,pref)
-     FILE *f;
-     char *pref;
+void printsmg(FILE *f, char *pref)
 {
   smgl s;
 

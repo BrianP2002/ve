@@ -6,6 +6,7 @@
 /bin
 /build
 *~
+*.py
 
 CMakeCache.txt
 CMakeFiles/

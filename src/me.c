@@ -136,8 +136,7 @@ void SetDefaults() /* This sets all sorts of globals to their default values
 
 #define freegpwd(w) {myfree((pointer)((w)->word)); myfree((pointer)(w));}
 
-static void freegaw(w)
-     gaw w;
+static void freegaw(gaw w)
 {
   switch (w->type)
     {
@@ -161,8 +160,7 @@ static void freegaw(w)
   myfree((pointer)w);
 }
 
-static void freerell(r)
-     rell r;
+static void freerell(rell r)
 {
   if (r->next)
     freerell(r->next);
@@ -179,8 +177,7 @@ static void freerell(r)
   myfree((pointer)r);
 }
 
-static void freeswl(s)
-     swl s;
+static void freeswl(swl s)
 {
   if (s->next)
     freeswl(s->next);
@@ -188,8 +185,7 @@ static void freeswl(s)
   myfree((pointer)s);
 }
 
-static void freewordl(wl)
-     wordl wl;
+static void freewordl(wordl wl)
 {
   int i;
   if (wl->type == wl_packed)
@@ -203,8 +199,7 @@ static void freewordl(wl)
   myfree((pointer)wl);
 }
 
-static void freesmgl(s)
-     smgl s;
+static void freesmgl(smgl s)
 {
   if (s->next)
     freesmgl(s->next);
@@ -220,8 +215,7 @@ static void freesmgl(s)
 }
 
 #ifndef LEN
-static void freeml(m)
-     menlist m;
+static void freeml(menlist m)
 {
   if (m->next)
     freeml(m->next);
@@ -350,9 +344,7 @@ void ReportAllocs()
 }
 #endif	   
 
-void flagprint(file,flags)
-	FILE *file;
-	unsigned int flags;
+void flagprint(FILE *file,unsigned int flags)
 {
 	fputc(' ',file);
 	if (flags & DBF_PUSHA) fputc('A',file);
@@ -476,8 +468,7 @@ static fldelt primes[] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
 
 #define Nprimes  sizeof(primes)/sizeof(fldelt)
 
-bool IsPrime(p)
-     int p;
+bool IsPrime(int p)
 {
   unsigned int top,bottom,mid;
   fldelt pm;

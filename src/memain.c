@@ -4,8 +4,7 @@
 #include <ctype.h>
 
 
-vector MultiImage(wl)
-	wordl wl;
+vector MultiImage(wordl wl)
 {	
   vector v1,v2,v3;
   basiselt b;
@@ -182,8 +181,7 @@ retcode DoSubGens()
   return OK;
 }
 
-retcode  DoLookahead(wmin,wmax)
-     weight wmin,wmax;
+retcode  DoLookahead(weight wmin,weight wmax)
 {
   weight w;
   rell r;
@@ -487,9 +485,7 @@ static retcode runquot()
 
 
 FILE *yyin;
-int main(argc,argv)		       
-     int argc;
-     char ** argv;
+int main(int argc, char ** argv)
 {
   retcode rc;
 /*   clock(); */

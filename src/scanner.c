@@ -96,8 +96,7 @@ static void backchar() /* only call once */
   input_char--;
 }
 
-static int scanner1(c)
-     int c;
+static int scanner1(int c)
 {
   int x=0;
   int c1=c;
@@ -134,8 +133,7 @@ static gpgen *outcome;
 #define FAIL ((gpgen)-1)
 static gpgen byname[26];
 
-static int scanner2(c)
-     int c;
+static int scanner2(int c)
 {
   int c1 =c ;
   state x=0,y;
@@ -292,9 +290,7 @@ int yylex()
 }
 
 
-void Warn(s,b)
-     char *s;
-     bool b;
+void Warn(char *s,bool b)
 {
   char *line;
   int l,k,i;

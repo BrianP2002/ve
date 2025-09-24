@@ -14,9 +14,7 @@
 #define SPBLOCK 10
 
 #ifdef GFP
-fldelt readfelt(f,b)
-     FILE *f;
-     bool *b;
+fldelt readfelt(FILE *f,bool *b)
 {
   fldelt y;
   int x;
@@ -45,9 +43,7 @@ fldelt readfelt(f,b)
 #endif
 
 #ifdef RATIONAL
-fldelt readfelt(f,b)
-     FILE *f;
-     bool *b;
+fldelt readfelt(FILE *f,bool *b)
 {
   int c;
   fldelt q;
@@ -79,9 +75,7 @@ fldelt readfelt(f,b)
 #endif
 
 #ifdef INTEGRAL
-fldelt readfelt(f,b)
-     FILE *f;
-     bool *b;
+fldelt readfelt(FILE *f,bool *b)
 {
   int c;
   fldelt z;
@@ -98,8 +92,7 @@ fldelt readfelt(f,b)
 
 #endif
 
-vector readvec(f)
-	FILE *f;
+vector readvec(FILE *f)
 {
    char buf[2],buf1[2];
    vector v,v1;
@@ -197,8 +190,7 @@ vector readvec(f)
 #define GENBLOCK 10
 #define STRBLOCK 10
 
-void addgen(s)
-     char *s;
+void addgen(char *s)
 {
   if (!nextgen)
     gennames = (char **)myalloc(sizeof(char *)*GENBLOCK,false);

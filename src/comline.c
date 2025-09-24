@@ -13,9 +13,7 @@ extern int optind;
 static char *bfm="Bad flag %s ignored\n";
 #define BADFLAG fprintf(stderr,bfm,argv[optind-1])
 
-void comline(argc,argv)		/* process command line */
-     int argc;
-     char **argv;
+void comline(int argc, char **argv)		/* process command line */
 {
   int opt,p1,p2;
   float f1;

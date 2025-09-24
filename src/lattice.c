@@ -40,8 +40,7 @@ lattmen lmalloc()
   return(m);
 }
 
-retcode AddLatt(v)
-     vector v;
+retcode AddLatt(vector v)
 {
   lattpos l;
   fldelt g,s,t;
@@ -143,12 +142,10 @@ retcode AddLatt(v)
 }
 
 
-retcode ChangeLVec(l,v) /* remove the vector l->v from the lattice, but do not free it
+retcode ChangeLVec(lrow l,vector v) /* remove the vector l->v from the lattice, but do not free it
 			insert v in the same e-place, but at the end of the w-order
 			v will have the same pivot column. Since we have v to hand, we 
 			can fix up all the gcds at once */
-     lrow l;
-     vector v;
 {
   lrow l1;
   sent s,send;
@@ -227,8 +224,7 @@ retcode ChangeLVec(l,v) /* remove the vector l->v from the lattice, but do not f
 }
 
   
-void StackGcdOne(b)
-     basiselt b;
+void StackGcdOne(basiselt b)
 
      /* process the fact that a column of the lattice has GCD one */
 {
@@ -311,9 +307,7 @@ void FixGcd(b)
 }
 
 
-retcode InsLatt(v,before)	      
-     vector v;
-     lattpos before;
+retcode InsLatt(vector v,lattpos before)
 {
   fldelt a,b;
   sent s,send;
@@ -387,10 +381,9 @@ retcode InsLatt(v,before)
 #endif
   return(OK);
 }
-  
-    
-void RenameLatt(b1,b2)
-     basiselt b1,b2;
+
+
+void RenameLatt(basiselt b1,basiselt b2)
      /* called from pack when basiselt b2 is being renamed as b1
 	called BEFORE changing the main table 
 	pack is responsible for moving the lattice column info, 
@@ -421,9 +414,7 @@ typedef struct s_gl {
 
 typedef _gl *gl;
 
-static int glc(p1,p2)
-     pointer p1;
-     pointer p2;
+static int glc(pointer p1,pointer p2)
 {
   lattpos l1 = ((gl)p1)->l,l2=((gl)p2)->l;
   if (l1 < l2)
@@ -572,9 +563,7 @@ void PackLatt()
 }
 		
 
-void CoinLatt(b,v)
-     basiselt b;
-     vector v;
+void CoinLatt(basiselt b, vector v)
      /* apply the coincidence b=v to the lattice */
      /* must be called before the b row is cleared in the main table */
 {
@@ -612,8 +601,7 @@ void CoinLatt(b,v)
   Fclear(fac);
 }
 
-void RemLatt(p)
-     lattpos p;
+void RemLatt(lattpos p)
 {
   vector v;
   lrow l;
@@ -647,10 +635,8 @@ void RemLatt(p)
   vfree(v);
 }
 
-	  
-void PrintLatt(f,pref)
-     FILE *f;
-     char *pref;
+
+void PrintLatt(FILE *f,char *pref)
 {
   lrow l;
   lattpos p;
@@ -662,9 +648,7 @@ void PrintLatt(f,pref)
     }
 }
 
-void OutLatt(f,m)
-     FILE *f;
-     OutMode m;
+void OutLatt(FILE *f, OutMode m)
 {
   lattpos p;
   outstyle *s;
@@ -685,8 +669,7 @@ lattpos *NextToDo;
 lattpos *SavedNext;
 weight *GenWt,*GenLWt;
 
-retcode PushLatt(w)
-     weight w;
+retcode PushLatt(weight w)
      /* This generates all the images needed at weight w */
 {
   weight gw;

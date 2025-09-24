@@ -3,9 +3,7 @@
 #include <memory.h>
 #include "me.h"
 
-retcode pushg(gw,be)			/* Push a group word */
-     gpwd gw;
-     basiselt be;
+retcode pushg(gpwd gw, basiselt be)			/* Push a group word */
 {
   vector vf=btov(be),vb=btov(be),v1; /* like SCE, front and back ptrs */
   gpgen g;
@@ -82,12 +80,10 @@ retcode pushg(gw,be)			/* Push a group word */
 }
   
 
-retcode pushrl(rl,w)		/* push a complete list of relators 
+retcode pushrl(rell rl, weight w)		/* push a complete list of relators 
 				   at a given weight. Returns true
 				   if there are no pushes left to do at
 				   this or any higher weight */
-     rell rl;
-     weight w;
 {
   weight wt;
   rell r;
@@ -141,10 +137,7 @@ retcode pushrl(rl,w)		/* push a complete list of relators
 }
 
 
-retcode push(w1,w2,b, inuniv)			/* push a g.a.w. */
-     gaw w1,w2;
-     basiselt b;
-     bool inuniv;
+retcode push(gaw w1,gaw w2,basiselt b, bool inuniv)			/* push a g.a.w. */
 {
   vector v1,v2,v3;
   retcode rc;
@@ -219,10 +212,7 @@ retcode push(w1,w2,b, inuniv)			/* push a g.a.w. */
 }
 
 
-vector image(v,w,rc)		/* image of v under gp alg. word w */
-     vector v;
-     gaw w;
-     retcode *rc;
+vector image(vector v,gaw w,retcode *rc)		/* image of v under gp alg. word w */
 {
   int i;
   gpwd g;
@@ -296,13 +286,9 @@ vector image(v,w,rc)		/* image of v under gp alg. word w */
   return(vr);
 }
 
-vector action(v,g,def,rc)	/* Action of group generator g on v
+vector action(vector v,gpgen g,DefineStatus def,retcode *rc)	/* Action of group generator g on v
 				 defining new basis elts is allowed if
 				 def is true */
-     vector v;
-     gpgen g;
-     DefineStatus def;
-     retcode *rc;
 {
   vector vg,vg1,v1;
   int status = 0;
@@ -505,10 +491,8 @@ vector baction(b,g,def,rc)	/* action of generator on basis elt
       return(NULL);
     }
 }
-	
-retcode initrow(b,stat)			/* initialize a new row */
-     basiselt b;
-     DefineStatus stat;
+
+retcode initrow(basiselt b,DefineStatus stat)			/* initialize a new row */
 {
   gpgen g;
   basiselt ots,b1;

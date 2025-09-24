@@ -138,8 +138,7 @@ typedef union hdr
 static header *last_alloca_header = NULL; /* -> last alloca header */
 
 pointer
-alloca (size)			/* returns pointer to storage */
-     unsigned	size;		/* # bytes to allocate */
+alloca (unsigned size)		/* returns pointer to storage */
 {
   auto char	probe;		/* probes stack depth: */
   register char	*depth = &probe;
