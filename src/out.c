@@ -397,8 +397,7 @@ void AXEPim(FILE *f)
   fputs("]",f);  
 }
 
-static void GAP2Head(f)
-     FILE *f;
+static void GAP2Head(FILE *f)
 {
   fputs(gap2var,f);
   fputs(" := rec(\n",f);
@@ -416,8 +415,7 @@ static void GAP2Head(f)
 }
 
 
-static void GAP2EGens(f)
-     FILE *f;
+static void GAP2EGens(FILE *f)
 {
   bool started = false;
   gpgen g;
@@ -433,8 +431,7 @@ static void GAP2EGens(f)
   fputs("],\n",f);
 }
 
-void GAP2StPims(f)
-     FILE *f;
+void GAP2StPims(FILE *f)
 {
   gpgen g;
   for (g = 0; g < nextgen; g++)
@@ -444,15 +441,12 @@ void GAP2StPims(f)
   fputs("preImages := [\n",f);
 }
 
-static void GAP2Tail(f)
-     FILE *f;
+static void GAP2Tail(FILE *f)
 {
   fputs("isNMEOutput := true);\n",f);
 }
 
-void GAP2WrGen(f,g)
-     FILE *f;
-     gpgen g;
+void GAP2WrGen(FILE *f,gpgen g)
 {
   fprintf(f,"~.g%s",gennames[g]);
 }
