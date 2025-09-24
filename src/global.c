@@ -7,8 +7,7 @@
 /* This is here to be a breakpoint in the debugger, and
 for no other reason */
 
-void myexit(rc)
-     int rc;
+void myexit(int rc)
 {
   exit(rc);
 }
