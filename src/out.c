@@ -452,9 +452,7 @@ void GAP2WrGen(FILE *f,gpgen g)
 }
 
 
-static void GAP2StMat(f,g)
-     FILE *f;
-     gpgen g;
+static void GAP2StMat(FILE *f,gpgen g)
 {
 #ifdef INTEGRAL
   if (g == (gpgen)-2)
