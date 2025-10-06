@@ -4,6 +4,7 @@
 #include "global.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 extern pointer myallocf PT((size_t, bool, char *, int));
 extern void myfreef PT((pointer, char *, int));

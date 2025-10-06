@@ -1,19 +1,22 @@
 cmake_minimum_required(VERSION 4.0.1)
 project(ve LANGUAGES C CXX)
 
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
 add_subdirectory(src/int)
 add_subdirectory(src/rat)
 add_subdirectory(src/ve)
 
-add_library(ve_kernel MODULE src/ve.cc)
-target_compile_options(ve_kernel PRIVATE -O2 -finline-functions)
-set_target_properties(ve_kernel PROPERTIES
-    PREFIX ""
-    OUTPUT_NAME "ve"
-    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
-)
+find_package(GMP REQUIRED)
+
+
+# add_library(ve_kernel MODULE src/ve.cc)
+# target_compile_options(ve_kernel PRIVATE -O2 -finline-functions)
+# set_target_properties(ve_kernel PROPERTIES
+#     PREFIX ""
+#     OUTPUT_NAME "ve"
+#     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
+# )
 
 add_custom_target(clean-all
     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/clean-all.cmake

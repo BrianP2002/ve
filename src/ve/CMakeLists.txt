@@ -42,7 +42,7 @@ add_executable(me ${OBJS1} ${OBJS2} ${OBJS3} ${XTRAOBJS} ${BISON_MyParser_TARGET
 target_include_directories(me PRIVATE ${SRC_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_definitions(me PRIVATE ME)
 target_compile_options(me PRIVATE -O2 -finline-functions)
-target_link_libraries(me PRIVATE m)
+target_link_libraries(me PRIVATE m GMP)
 
 set_target_properties(me PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
