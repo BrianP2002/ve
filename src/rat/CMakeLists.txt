@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 4.0.1)
 
 find_package(BISON REQUIRED)
+find_package(GMP REQUIRED)
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
@@ -47,7 +48,9 @@ add_dependencies(qme parser_rat)
 target_include_directories(qme PRIVATE ${SRC_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_definitions(qme PRIVATE QME)
 target_compile_options(qme PRIVATE -O2 -finline-functions)
-target_link_libraries(qme PRIVATE m GMP)
+target_link_libraries(qme PRIVATE m)
+target_include_directories(qme PRIVATE ${GMP_INCLUDE_DIRS})
+target_link_libraries(qme PRIVATE ${GMP_LIBRARIES})
 
 set_target_properties(qme PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin

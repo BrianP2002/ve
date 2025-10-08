@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 4.0.1)
 project(ve LANGUAGES C CXX)
 
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
+find_package(GMP REQUIRED)
 
 add_subdirectory(src/int)
 add_subdirectory(src/rat)
 add_subdirectory(src/ve)
-
-find_package(GMP REQUIRED)
 
 
 # add_library(ve_kernel MODULE src/ve.cc)

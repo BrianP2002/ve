@@ -47,7 +47,9 @@ add_dependencies(zme parser)
 target_include_directories(zme PRIVATE ${SRC_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_definitions(zme PRIVATE ZME)
 target_compile_options(zme PRIVATE -O2 -finline-functions)
-target_link_libraries(zme PRIVATE m GMP)
+target_link_libraries(zme PRIVATE m)
+target_include_directories(zme PRIVATE ${GMP_INCLUDE_DIRS})
+target_link_libraries(zme PRIVATE ${GMP_LIBRARIES})
 
 set_target_properties(zme PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
