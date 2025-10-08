@@ -282,8 +282,7 @@ void StackGcdOne(basiselt b)
   return;
 }
 	      
-void FixGcd(b)
-     basiselt b;
+void FixGcd(basiselt b)
      /* Called when the gcd of column b is unknown and needs to be known */
 {
   fldelt *gp;
@@ -414,7 +413,7 @@ typedef struct s_gl {
 
 typedef _gl *gl;
 
-static int glc(pointer p1,pointer p2)
+static int glc(const void *p1, const void *p2)
 {
   lattpos l1 = ((gl)p1)->l,l2=((gl)p2)->l;
   if (l1 < l2)

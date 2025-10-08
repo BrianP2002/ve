@@ -499,10 +499,7 @@ outstyle outstyles[] = {
 };
 
 
-void OutRow(f,v,s)
-     FILE *f;
-     vector v;
-     outstyle *s;
+void OutRow(FILE *f, vector v, outstyle *s)
 {
   basiselt i,bb;
   sent se, send;

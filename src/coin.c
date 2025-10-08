@@ -221,14 +221,13 @@ retcode processc(vector v)			/* process the coincidence e_b = v */
     {
       s = BodyEndS(v0)-1;
       unit = false;
-      if  (((s->fac).d[0]) == 1)
-	if ((s->fac).size == 1)
-	  {
-	    smul(v0,MinusOne);
-	    unit = true;
-	  }
-	else if ((s->fac).size == -1)
+      if (IsOne(s->fac))
+	{
+	  smul(v0,MinusOne);
 	  unit = true;
+	}
+      else if (IsMOne(s->fac))
+	unit = true;
       if (unit)
 	{
 	  ASSERT(IsMOne(s->fac));
@@ -241,14 +240,13 @@ retcode processc(vector v)			/* process the coincidence e_b = v */
       for (s = BodyEndS(v0)-1; s >= BodyS(v0); s--)
 	{
 	  unit = false;
-	  if  (*((s->fac).d) == 1)
-	    if ((s->fac).size == 1)
-	      {
-		smul(v0,MinusOne);
-		unit = true;
-	      }
-	    else if ((s->fac).size == -1)
+	  if (IsOne(s->fac))
+	    {
+	      smul(v0,MinusOne);
 	      unit = true;
+	    }
+	  else if (IsMOne(s->fac))
+	    unit = true;
 	  if (unit)
 	    {
 	      ASSERT(IsMOne(s->fac));
@@ -446,8 +444,7 @@ void clrent(basiselt b, gpgen g)			/* clear an entry */
   blanks++;
 }
 
-vector vroot(v)			/* find the undeleted name of v */
-      vector v;
+vector vroot(vector v)		/* find the undeleted name of v */
 {
   vector v3,v1 = v;
   bool moved = false;

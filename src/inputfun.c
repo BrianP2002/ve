@@ -88,13 +88,15 @@ void setupinverses(gpgen *noinv, gpgen *notinv)
 
 void addugen(char l)
 {
-  if (!(nextgen%GENBLOCK))
-    if (nextgen)
+  if (!(nextgen%GENBLOCK)) {
+    if (nextgen) {
       gennames = (char **)myrealloc(gennames,
 				    sizeof(char *)*(nextgen+GENBLOCK),
 				    false);
-    else
+    } else {
       gennames = (char **)myalloc(sizeof(char *)*GENBLOCK,false);
+    }
+  }
   gennames[nextgen] = (char *)myalloc(2,false);
   gennames[nextgen][0] = l;
   gennames[nextgen][1] = '\0';
@@ -103,14 +105,16 @@ void addugen(char l)
 
 void addlgen(char *s)
 {
-  if (!(nextgen%GENBLOCK))
-    if (nextgen)
+  if (!(nextgen%GENBLOCK)) {
+    if (nextgen) {
       gennames = (char **)myrealloc(gennames,
 				    sizeof(char *)*(nextgen+GENBLOCK),
 				    false);
-    else
+    } else {
       gennames = (char **)myalloc(sizeof(char *)*GENBLOCK,
 				  false);
+    }
+  }
   gennames[nextgen] = s;
   nextgen++;
 }
@@ -249,8 +253,7 @@ rell relconcat(rell r1, rell r2)		/* in situ concatenate two relator lists */
   return(r1);
 }
 
-void cleanrels(rp)
-     rell *rp;
+void cleanrels(rell *rp)
 {
   rell r;
   while ((r = *rp))
@@ -350,8 +353,7 @@ void getinput()			/* drive the parser */
     }
 }
 
-int yyerror(s)			/* minimal error handler */
-     char *s;
+int yyerror(char *s)		/* minimal error handler */
 {
   ErrorSpotted = true;
   return true;
@@ -386,8 +388,7 @@ wordl newwordl(gaw w)
     return(wl);
 }	
 
-smgl newsmgl(lft,rt)
-     wordl lft,rt;
+smgl newsmgl(wordl lft, wordl rt)
 {
   smgl s;
   s = (smgl) myalloc(sizeof(struct _smgl),false);
@@ -398,9 +399,7 @@ smgl newsmgl(lft,rt)
   return(s);
 }
 
-smgl newuniv(start,end,w)
-     basiselt start,end;
-     gaw w;
+smgl newuniv(basiselt start, basiselt end, gaw w)
 {
   smgl s;
   s = (smgl) myalloc(sizeof(struct _smgl),false);
@@ -433,8 +432,7 @@ smg smgltosmg(smgl sl)
 }
 
 
-void setfield(p)
-     unsigned int p;
+void setfield(unsigned int p)
 {
 #ifdef GFP
   unsigned int top,bottom,mid;
@@ -472,8 +470,7 @@ int inttorat(int x)
   return r;
 }
 
-int makerat(x,y)
-     int x,y;
+int makerat(int x, int y)
 {
   fldelt z,xx,yy;
   xx = rattofelt(inttorat(x));
@@ -487,25 +484,21 @@ int makerat(x,y)
 
 #if defined(RATIONAL) || defined(INTEGRAL)
 
-MP_INT startint(x)
-     int x;
+MP_INT startint(int x)
 {
   MP_INT t;
   mpz_init_set_si(&t,x);
   return t;
 }
 
-MP_INT contint(t,x)
-     MP_INT t;
-     int x;
+MP_INT contint(MP_INT t, int x)
 {
   mpz_mul_ui(&t,&t,(unsigned)10);
   mpz_add_ui(&t,&t,(unsigned)x);
   return t;
 }
 
-MP_INT negint(t)
-     MP_INT t;
+MP_INT negint(MP_INT t)
 {
   mpz_neg(&t,&t);
   return t;
@@ -514,8 +507,7 @@ MP_INT negint(t)
 #endif
 
 #ifdef RATIONAL
-MP_RAT inttorat(t)
-     MP_INT t;
+MP_RAT inttorat(MP_INT t)
 {
   MP_RAT q;
   mpq_init(&q);
@@ -525,9 +517,7 @@ MP_RAT inttorat(t)
   return q;
 }
 
-MP_RAT makerat(x,y)
-     MP_INT x;
-     MP_INT y;
+MP_RAT makerat(MP_INT x, MP_INT y)
 {
   MP_RAT q;
   mpq_init(&q);
@@ -543,9 +533,7 @@ MP_RAT makerat(x,y)
 
 #ifdef INTEGRAL
 
-MP_INT makerat(x,y)
-     MP_INT x;
-     MP_INT y;
+MP_INT makerat(MP_INT x, MP_INT y)
 {
   MP_INT q;
   MP_INT r;

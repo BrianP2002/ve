@@ -411,12 +411,8 @@ vector action(vector v,gpgen g,DefineStatus def,retcode *rc)	/* Action of group 
 }
   
 
-vector baction(b,g,def,rc)	/* action of generator on basis elt
+vector baction(basiselt b, gpgen g, DefineStatus def, retcode *rc)	/* action of generator on basis elt
 				 again def allows or forbids new basis elts*/
-     basiselt b;
-     gpgen g;
-     DefineStatus def;
-     retcode *rc;
 {
   vector v;
   basiselt b1;

@@ -128,10 +128,10 @@ extern fldelt FOne;
 #define Finit(f) mpz_init(&(f))
 #define Fclear(f) mpz_clear(&(f))
 #define Fcopy(f,r) mpz_set(&(r),&(f))
-#define IsZero(f) ((f).size == 0)	     
-#define IsOne(f) ((f).d[0] == 1 && (f).size == 1 )
-#define IsMOne(f) ((f).d[0] == 1 && (f).size == -1 )
-#define IsNegative(f) ((f).size < 0)
+#define IsZero(f) (mpz_cmp_ui(&(f), 0) == 0)	     
+#define IsOne(f) (mpz_cmp_ui(&(f), 1) == 0)
+#define IsMOne(f) (mpz_cmp_si(&(f), -1) == 0)
+#define IsNegative(f) (mpz_sgn(&(f)) < 0)
 #endif
 
 
@@ -570,7 +570,7 @@ extern bool closed;
 
      /* from out.c */
 
-#define NPT(a) ()
+#define NPT(a) a
 
 typedef struct s_outstyle
 {

@@ -18,7 +18,7 @@ extern void PackLatt PT((void));	/* reclaim space in the lattice header table */
 extern void CoinLatt PT((basiselt,vector)); /* Apply a coincidence to the lattice */
 extern void PrintLatt PT((FILE *, char *));	/* print out the lattice */
 extern void OutLatt PT((FILE *,OutMode));		/* finally output the lattice */
-extern retcode PushLatt PT((int)); /* do all the pushing needed for the lattice at a given weight */
+extern retcode PushLatt PT((weight)); /* do all the pushing needed for the lattice at a given weight */
 extern void LattClosing PT((void));	/* Signal that the lattice is closing */
 
 extern retcode AddLatt PT((vector));	/* add a new relation to the lattice*/
