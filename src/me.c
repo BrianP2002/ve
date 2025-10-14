@@ -509,7 +509,8 @@ bool IsPrime(int p)
 #ifdef SYS_IS_BSD
 # define SYS_BSD        1
 #else
-# define SYS_BSD        0
+// # define SYS_BSD        0
+# define SYS_BSD        1
 #endif
 
 #ifdef SYS_IS_MACH
