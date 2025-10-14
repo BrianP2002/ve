@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 4.0.1)
 
 find_package(BISON REQUIRED)
+find_package(GMP REQUIRED)
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
