@@ -62,12 +62,15 @@ static bool getaline()
   } while (l == 999 && lbuffer[l-1] != '\n');
 
   /* When we get out, the line is in sofar, its length in l1 */
-  if (!(++input_line % ILBLOCK))
-    if (input_lines)
-      input_lines = (char **)
-	myrealloc(input_lines,sizeof(char *)*(input_line+ILBLOCK),false);
-    else
+  if (!(++input_line % ILBLOCK)){
+    if (input_lines){
+      input_lines = (char **) myrealloc(input_lines,sizeof(char *)*(input_line+ILBLOCK),false);
+    }
+    else{
       input_lines = (char **)myalloc(sizeof(char*)*ILBLOCK, false);
+    }
+  }
+    
   input_lines[input_line] = sofar;
   return ( l1 > 0);
 }
@@ -108,11 +111,15 @@ static int scanner1(int c)
     }
   while (islower(c1))
     {
-      if (!(x%STRBLOCK))
-	if (s)
-	  s = (char *)myrealloc(s,x+STRBLOCK,false);
-	else
-	  s = (char *)myalloc(STRBLOCK,false);
+      if (!(x%STRBLOCK)){
+        if (s){
+          s = (char *)myrealloc(s,x+STRBLOCK,false);
+        }
+        else{
+          s = (char *)myalloc(STRBLOCK,false);
+        }
+      }
+	
       s[x++] = (char)c1;
       c1 = nextchar();
     }
@@ -123,7 +130,7 @@ static int scanner1(int c)
   return(LCW);
 }
 
-static int (*scanner)()=scanner1;
+static int (*scanner)(int) = scanner1;
 
 typedef int state;
 static state **aut = NULL;

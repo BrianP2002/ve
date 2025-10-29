@@ -162,8 +162,8 @@ void comline(int argc, char **argv)		/* process command line */
 	break;
 	
       case 'a':
-	if (strlen(optarg) == 1)
-	  if (*optarg == '+')
+	if (strlen(optarg) == 1){
+		if (*optarg == '+')
 	    {
 	      LA = true;
 	      break;
@@ -173,6 +173,8 @@ void comline(int argc, char **argv)		/* process command line */
 	      LA = false;
 		break;
 	    }
+	}
+	  
 	if (1 == sscanf(optarg,"%d",&p1))
 	  {
 	    LA = true;
