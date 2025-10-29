@@ -70,7 +70,7 @@
 %type <rell> rell algpart gppart gpwdw eqw eq rellpart gpparts algparts gppartu algpartu
 %type <smgl> smgl smgen smglp smglu
 %type <smg> smgpart
-%type <wordl> wordl,sparsel,halfsmgen
+%type <wordl> wordl sparsel halfsmgen
 
 
 %%
