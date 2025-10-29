@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.1)
+cmake_minimum_required(VERSION 3.31.6)
 
 find_package(BISON REQUIRED)
 find_package(GMP REQUIRED)
