@@ -1,0 +1,32 @@
+name: Configue and Build 
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -B build .
+
+      - name: Build with make
+        shell: bash
+        run: |
+          cd build
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            CORES=$(nproc)
+          else
+            CORES=$(sysctl -n hw.ncpu)
+          fi
+          make -j"$CORES"
