@@ -16,6 +16,7 @@
 
 # Copyright (c) 2016 Jack Poulson, <jack.poulson@gmail.com>
 # Copyright (c) 2020, Mahrud Sayrafi, <mahrud@umn.edu>
+# Removed finding GMP C++ libraries as not needed for the project
 # Redistribution and use is allowed according to the terms of the BSD license.
 
 # Set GMP_FIND_VERSION to 1.0.0 if no minimum version is specified
@@ -85,7 +86,6 @@ if(NOT GMP_VERSION_OK)
   set(GMP_INCLUDE_DIRS NOTFOUND)
   set(GMP_LIBRARY_DIRS NOTFOUND)
   set(GMP_LIBRARIES NOTFOUND)
-  set(GMPXX_LIBRARIES NOTFOUND)
 
   # search first if an GMPConfig.cmake is available in the system,
   # if successful this would set GMP_INCLUDE_DIRS and the rest of
@@ -106,14 +106,8 @@ if(NOT GMP_VERSION_OK)
     find_library(GMP_LIBRARIES NAMES gmp
       HINTS ENV GMPDIR ENV GMPDIR
       PATHS ${LIB_INSTALL_DIR} ${CMAKE_INSTALL_PREFIX}/lib)
-    find_library(GMPXX_LIBRARIES NAMES gmpxx
-      HINTS ENV GMPDIR ENV GMPDIR
-      PATHS ${LIB_INSTALL_DIR} ${CMAKE_INSTALL_PREFIX}/lib)
-    set(GMP_LIBRARIES ${GMPXX_LIBRARIES} ${GMP_LIBRARIES})
-  endif()
-
-  if(GMPXX_LIBRARIES)
-    get_filename_component(GMP_LIBRARY_DIRS "${GMPXX_LIBRARIES}" DIRECTORY)
+    set(GMP_LIBRARIES ${GMP_LIBRARIES})
+    get_filename_component(GMP_LIBRARY_DIRS "${GMP_LIBRARIES}" DIRECTORY)
   endif()
 
   string(REGEX REPLACE "/include.*" "" GMP_ROOT "${GMP_INCLUDE_DIRS}")
