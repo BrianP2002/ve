@@ -187,6 +187,7 @@ halfsmgen:	'(' wordl ')'
               | error  ':' algpartu {Warn("Can't parse group type relators",true);
 				    $$ = relconcat(NULL,$3);}
  gppartu:     gppart   {$$ = $1;}
+              | gpparts  {$$ = $1;}
      
  gpparts:     /* empty */     {$$ = NULL;}
               | gppart listsep  {$$ = $1;}
@@ -208,6 +209,7 @@ halfsmgen:	'(' wordl ')'
 
 
  algpartu:      algpart {$$ = $1;}
+              | algparts {$$ = $1;}
      
  algparts:	/* empty */	{$$ = NULL;}
 	      | algpart listsep	{ $$ = $1;}
@@ -276,4 +278,4 @@ halfsmgen:	'(' wordl ')'
 
  listsep:       ',' | ';'
 
-%%					    
+%%
