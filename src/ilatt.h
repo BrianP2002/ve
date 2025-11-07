@@ -40,11 +40,11 @@ extern lrow Lattice;
 extern lattpos lattsize;
 
 
-extern retcode ChangeLVec();
-extern retcode InsLatt();
-extern void StackGcdOne();
-extern void FixGcd();
-extern void RemLatt();
+extern retcode ChangeLVec(lrow, vector);
+extern retcode InsLatt(vector, lattpos);
+extern void StackGcdOne(basiselt);
+extern void FixGcd(basiselt);
+extern void RemLatt(lattpos);
 extern void lmcheck();
 
 #define LATT_BLOCK 1000
