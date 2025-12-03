@@ -1,0 +1,13 @@
+gap> START_TEST("VE Raw Input Test 1");
+gap> inputStr := "0.STUBC..*.:B2=C.(SUT)3,S2,\nUTU~T~,\nBSB~S~, BTB~T~, BUB~U~, BCB~C~,\nCSC~S~,CTC~T~, CUC~U~: T2-2T+1, U2+2BU-C,S+1.";;
+gap> inputFile := "temp_ve_test.in";;
+gap> outputFile := "temp_ve_test.out";;
+gap> veBinDir := Directory("./pkg/ve/bin");;
+gap> vePath := Filename( veBinDir, "qme.exe" );;
+gap> FileString( inputFile, inputStr );;
+gap> cmd := Concatenation( vePath, " < ", inputFile, " > ", outputFile );;
+gap> Exec( cmd );;
+gap> output := StringFile( outputFile );;
+gap> Print( output );
+gap> Exec( Concatenation( "rm ", inputFile, " ", outputFile ) );;
+gap> STOP_TEST( "test1.tst", 1000 );
